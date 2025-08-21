@@ -1,50 +1,28 @@
 from flask import Flask, render_template, jsonify
 import speedtest
-import threading
-import time
 
 app = Flask(__name__)
 
-# Store results in memory
-results_history = []
+@app.route("/")
+def home():
+    return render_template("index.html")  # your frontend in templates/index.html
 
-def run_speed_test():
+@app.route("/speedtest")
+def run_speedtest():
     try:
         st = speedtest.Speedtest()
         st.get_best_server()
-        download_speed = round(st.download() / 1_000_000, 2)  # Mbps
-        upload_speed = round(st.upload() / 1_000_000, 2)      # Mbps
-        ping = round(st.results.ping, 2)
-        server = st.get_best_server()["host"]
+        download_speed = st.download() / 1_000_000  # Convert to Mbps
+        upload_speed = st.upload() / 1_000_000      # Convert to Mbps
+        ping_result = st.results.ping
 
-        result = {
-            "date": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "download": download_speed,
-            "upload": upload_speed,
-            "ping": ping,
-            "server": server
-        }
-
-        results_history.insert(0, result)  # latest first
-        if len(results_history) > 10:
-            results_history.pop()  # keep only last 10
-
-        return result
+        return jsonify({
+            "download": round(download_speed, 2),
+            "upload": round(upload_speed, 2),
+            "ping": round(ping_result, 2)
+        })
     except Exception as e:
-        return {"error": str(e)}
-
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/start-test")
-def start_test():
-    result = run_speed_test()
-    return jsonify(result)
-
-@app.route("/history")
-def history():
-    return jsonify(results_history)
+        return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
