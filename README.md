@@ -10,4 +10,4 @@ A web-based Internet Speed Test built with **Flask + HTML + CSS + JavaScript**.
 ## How to Run
 1. Clone this repo:
    ```bash
-   git clone https://github.com/Dibyendu2005/net-speed-test.git
+
