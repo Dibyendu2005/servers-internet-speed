@@ -8,6 +8,4 @@ A web-based Internet Speed Test built with **Flask + HTML + CSS + JavaScript**.
 - Saves results into CSV
 
 ## How to Run
-1. Clone this repo:
-   ```bash
-
+https://net-speed-test.onrender.com
