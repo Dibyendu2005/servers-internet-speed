@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internet Speed Test</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <title>🚀 Internet Speed Test</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="container">
     <h1>🚀 Internet Speed Test</h1>
-
     <button id="startBtn">Start Test</button>
-    <p id="countdown">Waiting...</p>
-
-    <div id="result">
-      <p><b>Download:</b> <span id="download">--</span> Mbps</p>
-      <p><b>Upload:</b> <span id="upload">--</span> Mbps</p>
-      <p><b>Ping:</b> <span id="ping">--</span> ms</p>
-      <p><b>Server:</b> <span id="server">--</span></p>
-    </div>
+    <p id="status">Waiting...</p>
+    <p><b>Download:</b> <span id="download">-- Mbps</span></p>
+    <p><b>Upload:</b> <span id="upload">-- Mbps</span></p>
+    <p><b>Ping:</b> <span id="ping">-- ms</span></p>
+    <p><b>Server:</b> <span id="server">--</span></p>
 
     <h2>📊 Recent Results</h2>
     <table>
@@ -31,10 +27,9 @@
           <th>Server</th>
         </tr>
       </thead>
-      <tbody id="resultsTable"></tbody>
+      <tbody id="results"></tbody>
     </table>
   </div>
-
-  <script src="/static/script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
