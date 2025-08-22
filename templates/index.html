@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet Speed Test</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Internet Speed Test</h1>
+
+    <button id="startBtn">Start Test</button>
+    <button id="againBtn" style="display:none;">Test Again</button>
+    <p id="countdown">Waiting...</p>
+
+    <div id="result">
+      <p><b>Download:</b> <span id="download">--</span> Mbps</p>
+      <p><b>Upload:</b> <span id="upload">--</span> Mbps</p>
+      <p><b>Ping:</b> <span id="ping">--</span> ms</p>
+      <p><b>Server:</b> <span id="server">--</span></p>
+    </div>
+
+    <h2>📊 Recent Results</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Download (Mbps)</th>
+          <th>Upload (Mbps)</th>
+          <th>Ping (ms)</th>
+          <th>Server</th>
+        </tr>
+      </thead>
+      <tbody id="resultsTable"></tbody>
+    </table>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
