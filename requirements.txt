@@ -1,4 +1,0 @@
-flask
-speedtest-cli
-gunicorn
-gevent
